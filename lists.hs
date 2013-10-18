@@ -27,3 +27,10 @@ p8 [] = []
 p8 [x] = [x]
 p8 (x:xs) = if x == (head xs) then p8 xs
             else [x] ++ p8 xs;
+			
+p9 :: (Eq a) => [a] -> [[a]]
+p9 []   = []
+p9 [x]  = [[x]]
+p9 (x:xs) = if x `elem` (head (p9 xs))
+          then (x:(head (p9 xs))):(tail (p9 xs))
+		  else [x]:(p9 xs)
