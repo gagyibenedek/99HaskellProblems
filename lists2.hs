@@ -33,3 +33,12 @@ p16 list n = helper list n n
   where helper [] _ _ = []
         helper (x:xs) count 1 = helper xs count count
         helper (x:xs) count n = x : (helper xs count (n - 1))
+        
+p17 :: [a] -> Int -> ([a],[a])
+p17 [] _ = ([],[])
+p17 list 0 = ([],list)
+p17 list n = helper list n n
+  where helper [] _ _ = ([], [])
+        helper list n 0 = ([], list)
+        helper (x:xs) n m = let helperResult = helper xs n (m-1)
+                            in (x : (fst (helperResult)) , (snd (helperResult)))
