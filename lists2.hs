@@ -42,3 +42,18 @@ p17 list n = helper list n n
         helper list n 0 = ([], list)
         helper (x:xs) n m = let helperResult = helper xs n (m-1)
                             in (x : (fst (helperResult)) , (snd (helperResult)))
+                            
+p18 :: [a] -> Int -> Int -> [a]
+p18 [] _ _ = []
+p18 (x:xs) i j
+   | i > (length (x:xs)) = []
+   | i > j = []
+   | ((i == 1) && (j /= 1)) = x : p18 xs 1 (j - 1) 
+   | otherwise = p18 xs (i - 1) (j - 1)   
+
+p19 :: [a] -> Int -> [a]
+p19 [] _ = []
+p19 list 0 = list
+p19 list i 
+    | i > 0 = (last list) :  (p19 (init list) (i-1))
+    | otherwise = (p19 (tail list) (i + 1)) ++ [head list]	
