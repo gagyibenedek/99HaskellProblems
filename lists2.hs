@@ -57,3 +57,11 @@ p19 list 0 = list
 p19 list i 
     | i > 0 =  p19 ((last list) : (init list)) (i-1)
     | otherwise = p19 ((tail list) ++ [head list]) (i + 1) 	
+    
+p20 :: [a] -> Int -> [a]
+p20 [] _ = []
+p20 (x:xs) i
+    | i < 1 = (x:xs)
+    | i > length (x:xs) = (x:xs)
+    | i == 1 = xs
+	| otherwise = x : p20 xs (i-1)
