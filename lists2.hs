@@ -55,5 +55,5 @@ p19 :: [a] -> Int -> [a]
 p19 [] _ = []
 p19 list 0 = list
 p19 list i 
-    | i > 0 = (last list) :  (p19 (init list) (i-1))
-    | otherwise = (p19 (tail list) (i + 1)) ++ [head list]	
+    | i > 0 =  p19 ((last list) : (init list)) (i-1)
+    | otherwise = p19 ((tail list) ++ [head list]) (i + 1) 	
