@@ -16,3 +16,8 @@ p26 0 _ = []
 p26 _ [] = []
 p26 1 (x:xs) = [x] : p26 1 xs
 p26 i (x:xs) = (map (x:) (p26 (i-1) xs)) ++ (p26 i xs)
+
+p28 :: Ord a => [[a]] -> [[a]]
+p28 [] = []
+p28 [x] = [x]
+p28 (x:xs) = p28 [y| y <- xs, (length y) < (length x)] ++ [x] ++ p28 [z| z <- xs, (length z) >= (length x)]
