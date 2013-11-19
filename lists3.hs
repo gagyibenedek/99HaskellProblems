@@ -10,3 +10,9 @@ p22 a b
     | a == b = [a]
 	| a > b = p22 b a
 	| otherwise = a : p22 (a+1) b
+	
+p26 :: Int -> [a] -> [[a]]
+p26 0 _ = []
+p26 _ [] = []
+p26 1 (x:xs) = [x] : p26 1 xs
+p26 i (x:xs) = (map (x:) (p26 (i-1) xs)) ++ (p26 i xs)
